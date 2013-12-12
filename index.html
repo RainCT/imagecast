@@ -1,0 +1,25 @@
+<meta http-equiv="refresh" content="30">
+<script>
+  function refreshImage() {
+    var image = new Image();
+    image.onload = function() {
+      imagecast.replaceChild(this, imagecast.firstChild);
+      setTimeout(refreshImage, 300);
+    };
+    image.src = 'image.png';
+  }
+  window.onload = function() {
+      /* can we explicitly free the old img? */
+    window.imagecast = document.getElementById('imagecast');
+    refreshImage();
+  };
+</script>
+<style>
+  img {
+    width: 100%;
+    height: auto;
+  }
+</style>
+<div id="imagecast">
+    Loading...
+</div>
